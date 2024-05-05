@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="urg.port" default="/dev/ttyACM0"/>
+  <arg name="main.port" default="/dev/serial/by-id/usb-T-frog_project_T-frog_Driver-if00"/>
+  <arg name="param_file"/>
+
+  <!-- device -->
+  <node name="ypspur_ros" pkg="ypspur_ros" type="ypspur_ros" output="screen">
+    <param name="param_file" value="$(arg main.port)"/>
+    <param name="param_file" value="$(arg param_file)"/>
+  </node>
+  <node name="urg_node" pkg="urg_node" type="urg_node" output="screen">
+    <param name="ip_address" value=""/>
+    <param name="serial_port" value="$(arg urg.port)"/>
+    <param name="serial_baud" value="115200"/>
+    <param name="frame_id" value="laser"/>
+    <param name="calibrate_time" value="true"/>
+    <param name="publish_intensity" value="false"/>
+    <param name="publish_multiecho" value="false"/>
+    <param name="angle_min" value="-3.14"/>
+    <param name="angle_max" value="3.14"/>
+  </node>
+
+  <!-- lacalize -->
+  <node name="static_transform_publisher" pkg="tf"  type="static_transform_publisher" args="0 0 0.2 0 0 0 base_link laser 0"/>
+  <node name="map_server" pkg="ymsm_midterm2024_map_server"  type="map_server"/>
+  <node name="scan2pole" pkg="ymsm_midterm2024_planner"  type="scan2pole"/>
+  <node name="localizer" pkg="ymsm_midterm2024_localizer"  type="localizer"/>
+
+  <!-- navigate -->
+  <node name="planner" pkg="ymsm_midterm2024_planner"  type="planner"/>
+  <node name="controller" pkg="ymsm_midterm2024_controller"  type="controller"/>
+  
+  <!-- vidualize -->
+  <node name="rviz" pkg="rviz"  type="rviz" args="-d $(find ymsm_midterm2024_bringup)/cfg/rviz.rviz"/>
+</launch>
