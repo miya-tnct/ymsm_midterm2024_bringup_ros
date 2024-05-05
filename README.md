@@ -33,12 +33,12 @@ cd ..
 catkin_make
 ```
 
-### source
+### 5.source
 ```bash
 source devel/setup.bash
 ```
 
-### 5. run
+### 6. run
 ```bash
 roslaunch ymsm_midterm2024_bringup.launch bringup param_file:=<your parameter file>
 ```
