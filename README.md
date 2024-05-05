@@ -15,7 +15,7 @@ git clone https://github.com/miya-tnct/ymsm_midterm2024_bringup_ros.git  ymsm_mi
 git clone https://github.com/miya-tnct/ymsm_midterm2024_localizer_ros.git  ymsm_midterm2024_localizer && \
 git clone https://github.com/miya-tnct/ymsm_midterm2024_map_server_ros.git  ymsm_midterm2024_map_server && \
 git clone https://github.com/miya-tnct/ymsm_midterm2024_planner_ros.git  ymsm_midterm2024_planner && \
-git clone https://github.com/miya-tnct/ymsm_midterm2024_polefinder_ros.git  ymsm_midterm2024_polefinder
+git clone https://github.com/miya-tnct/ymsm_midterm2024_pole_finder_ros.git  ymsm_midterm2024_pole_finder
 ```
 
 ### 3. change dir
