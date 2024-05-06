@@ -7,7 +7,7 @@
 
   <!-- device -->
   <node name="ypspur_ros" pkg="ypspur_ros" type="ypspur_ros" output="screen">
-    <param name="param_file" value="$(arg main.port)"/>
+    <param name="port" value="$(arg main.port)"/>
     <param name="param_file" value="$(arg param_file)"/>
   </node>
   <node name="urg_node" pkg="urg_node" type="urg_node" output="screen">
@@ -23,15 +23,15 @@
   </node>
 
   <!-- lacalize -->
-  <node name="static_transform_publisher" pkg="tf"  type="static_transform_publisher" args="0 0 0.2 0 0 0 base_link laser 0"/>
-  <node name="map_server" pkg="ymsm_midterm2024_map_server"  type="map_server"/>
-  <node name="pole_finder" pkg="ymsm_midterm2024_pole_finder"  type="pole_finder"/>
-  <node name="localizer" pkg="ymsm_midterm2024_localizer"  type="localizer"/>
+  <node name="static_transform_publisher" pkg="tf"  type="static_transform_publisher" args="0 0 0.2 0 0 0 base_link laser 10" output="screen"/>
+  <node name="map_server" pkg="ymsm_midterm2024_map_server"  type="map_server" output="screen"/>
+  <node name="pole_finder" pkg="ymsm_midterm2024_pole_finder"  type="pole_finder" output="screen"/>
+  <node name="localizer" pkg="ymsm_midterm2024_localizer"  type="localizer" output="screen"/>
 
   <!-- navigate -->
-  <node name="planner" pkg="ymsm_midterm2024_planner"  type="planner"/>
-  <node name="controller" pkg="ymsm_midterm2024_controller"  type="controller"/>
+  <node name="planner" pkg="ymsm_midterm2024_planner"  type="planner" output="screen"/>
+  <node name="controller" pkg="ymsm_controller"  type="controller" output="screen"/>
   
   <!-- vidualize -->
-  <node name="rviz" pkg="rviz"  type="rviz" args="-d $(find ymsm_midterm2024_bringup)/cfg/rviz.rviz"/>
+  <node name="rviz" pkg="rviz"  type="rviz" args="-d $(find ymsm_midterm2024_bringup)/cfg/rviz.rviz" output="screen"/>
 </launch>
